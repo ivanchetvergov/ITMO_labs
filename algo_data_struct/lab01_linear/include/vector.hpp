@@ -16,9 +16,24 @@ public:
 
     void print() const;
 
+    class Iterator {
+    public:
+        Iterator(T* ptr) : ptr_(ptr) {}
+
+        T& operator*() const { return *ptr_; }
+        Iterator& operator++() { ++ptr_; return *this; }
+        bool operator!=(const Iterator& other) const { return ptr_ != other.ptr_; }
+
+    private:
+        T* ptr_;
+    };
+
+    Iterator begin(){ return Iterator(data_); }
+    Iterator end(){ return Iterator(data_ + size_); }
+
 private:
     T* data_;
-    int capacity_;
+    size_t capacity_;
     size_t size_;
 
     void resize(int capacity);
