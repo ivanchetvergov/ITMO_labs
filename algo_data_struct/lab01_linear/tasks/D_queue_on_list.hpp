@@ -4,11 +4,11 @@
 #include <string>
 #include <sstream> 
 
-#include "../include/vector.hpp"
+#include "../include/list.hpp"
 
 using namespace std;
 
-int task_A(){
+int task_D(){
     int M; 
     // cout << "input number M: ";
     cin >> M;
@@ -16,7 +16,7 @@ int task_A(){
 
     string input;
 
-    MyVector<int> vector;
+    MyList<int> list;
 
     for (int i = 0; i < M; ++i){   
         // cout << "input operation: ";
@@ -31,12 +31,12 @@ int task_A(){
         switch (op){
             case '+':
                 iss >> value;
-                vector.push_back(value);
-                // vector.print();
+                list.push_back(value);
+                // list.print();
                 break;
             case '-':
                 try {
-                    int popped_el = vector.pop_back();
+                    int popped_el = list.pop_top();
                     cout << popped_el << endl;
                 } catch (const std::exception& e) {
                     // cout << e.what() << endl;

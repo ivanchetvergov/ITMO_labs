@@ -6,7 +6,6 @@ template <typename T>
 MyList<T>::MyList()
     : Head_(nullptr), Tail_(nullptr) {}
 
-  
 template <typename T>
 MyList<T>::MyList(const T& value){
     Head_ = new Node<T>(value);
@@ -66,11 +65,12 @@ T MyList<T>::pop_top(){
 template <typename T>
 void MyList<T>::clear(){
     Node<T>* current = Head_;
-    while(current->pNext_){
+    while(current){
         Node<T>* temp = current;
         current = current->pNext_;
-        delete[] temp;
+        delete temp;
     }
+    Head_ = nullptr;
 }
 
 template class MyList<int>;

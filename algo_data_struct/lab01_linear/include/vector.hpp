@@ -8,7 +8,8 @@ public:
     MyVector();
 
     void push_back(T given);
-    T pop();
+    T pop_top();
+    T pop_back();
 
     const T operator[](size_t index) const;
     T& operator[](size_t index);

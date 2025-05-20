@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int task_A(){
+int task_C(){
     int M; 
     // cout << "input number M: ";
     cin >> M;
@@ -36,7 +36,7 @@ int task_A(){
                 break;
             case '-':
                 try {
-                    int popped_el = vector.pop_back();
+                    int popped_el = vector.pop_top();
                     cout << popped_el << endl;
                 } catch (const std::exception& e) {
                     // cout << e.what() << endl;

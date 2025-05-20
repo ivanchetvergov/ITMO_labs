@@ -5,7 +5,7 @@
 
 template <typename T>
 MyVector<T>::MyVector() 
-    : size_(0), capacity_(10){
+    : capacity_(10), size_(0){
     data_ = new T[capacity_];
 }
 
@@ -21,7 +21,25 @@ void MyVector<T>::push_back(T given)
 }
 
 template <typename T>
-T MyVector<T>::pop(){
+T MyVector<T>::pop_top(){
+    if (!size_) {
+        throw std::out_of_range("vector is empty, cannot pop");
+    }
+    T value = data_[0];   
+    --size_;
+    // create new Arr and copy data
+    T* newData = new T[capacity_];
+    for (int i = 0; i < size_; ++i){
+        newData[i] = data_[i + 1];
+    }
+    delete[] data_;
+    data_ = newData; // rewrite data_
+
+    return value;    
+}
+
+template <typename T>
+T MyVector<T>::pop_back(){
     if (!size_) {
         throw std::out_of_range("vector is empty, cannot pop");
     }
